@@ -1,0 +1,5 @@
+.gitignore
+.ipynb_checkpoints/
+*.ipynb
+__pycache__/
+bower_components/
