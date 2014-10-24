@@ -3,34 +3,43 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 
-import mpld3
-
+def saveFigure(name):
+  print("Saving pdf of " +name +"...")
+  plt.savefig(name+'.np'+str(nPaths)+'.ns'+str(nSteps)+'.pdf', bbox_inches='tight')
+#  print("Saving " +name +" png")
+#  plt.savefig(name+'.png', bbox_inches='tight')
+  
 # Parameters
-N_paths = 400
-N_steps = 400
+nPaths = 400
+nSteps = 400
 figureWidth = 24
 
 # 100 evenly-spaced values from 0 to 10
-x = np.linspace(0, N_steps, N_steps)
+x = np.linspace(0, nSteps, nSteps)
 
 # Generate matrix of -1's and 1's, then take their cumulative sum
-y = 2* np.floor(2 * (np.random.random((N_paths, N_steps)) )) -1
+y = 2* np.floor(2 * (np.random.random((nPaths, nSteps)) )) -1
 y = np.cumsum(y, axis=1)
 
 # Calculate the average distance from zero
 avg = np.mean(np.absolute(y), axis=0)
 ysqrt = np.sqrt(2*x/3.14159265)
 
+# Initial figure
+fig, ax = plt.subplots(figsize=(figureWidth,figureWidth/2))
 
-# Plotting Jazz
-fig, ax = plt.subplots(figsize=(figureWidth,figureWidth/2), dpi=80, subplot_kw={'xticks': [], 'yticks': []})
-lines = ax.plot(x, y.transpose(), color='blue', lw=1, alpha=0.1)
+# Plot!
+ax.plot(x, y.transpose(), color='blue', lw=0, alpha=0.0)
+ax.plot(x, y[1].transpose(), color='blue', lw=3, alpha=1)
+saveFigure("rWalkSingle")
+ax.cla()
 
-plt.savefig('foo1.pdf')
+ax.plot(x, y[1].transpose(), color='blue', lw=3, alpha=1)
+ax.plot(x, y.transpose(), color='blue', lw=1, alpha=0.1)
+saveFigure("rWalkAll")
+
 avgPlot = plt.plot(x, avg, color='red', lw=2, alpha=1)
-plt.savefig('foo2.pdf')
+saveFigure("rWalkAvg")
+
 sqrtPlot = plt.plot(x, ysqrt, color='green', lw=2, alpha=1)
-plt.savefig('foo3.pdf')
-
-#mpld3.save_html(fig, "randomWalkBig.html")
-
+saveFigure("rWalkAvgSqrt")
