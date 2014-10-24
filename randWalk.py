@@ -12,7 +12,7 @@ nPaths = 400
 nSteps = 400
 figureWidth = 24
 
-# 100 evenly-spaced values from 0 to 10
+# Set x to evenly-spaced values from 0 to nSteps
 x = np.linspace(0, nSteps, nSteps)
 
 # Generate matrix of -1's and 1's, then take their cumulative sum
