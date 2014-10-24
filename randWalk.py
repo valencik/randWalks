@@ -21,7 +21,7 @@ y = np.cumsum(y, axis=1)
 
 # Calculate the average distance from zero
 avg = np.mean(np.absolute(y), axis=0)
-ysqrt = np.sqrt(2*x/3.14159265)
+ysqrt = np.sqrt(2 * x / np.pi)
 
 # Initial figure
 fig, ax = plt.subplots(figsize=(figureWidth,figureWidth/2))
