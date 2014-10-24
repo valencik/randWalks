@@ -1,5 +1,3 @@
-import jinja2
-import json
 import numpy as np
 import matplotlib.pyplot as plt
 
