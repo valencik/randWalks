@@ -1,4 +1,6 @@
 Random Walks
 ============
 
-This repo plays with visualizations of random walks.
+Generate plots of random walks, along with the average distance.
+
+![Travis Build Status](https://travis-ci.org/valencik/randWalks.svg?branch=master)
